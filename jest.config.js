@@ -1,9 +1,17 @@
+const path = require('path');
+
 module.exports = {
     roots: ['<rootDir>/src'],
+    testEnvironment: 'jsdom',
     transform: {
-        '^.+\\.tsx?$': 'ts-jest',
+        '\\.(js|jsx|ts|tsx)?$': 'babel-jest',
     },
-    preset: 'ts-jest',
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node']
+    testMatch: [
+        path.join(__dirname, 'src/**/*.test.[tj]s?(x)')
+    ],
+    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+    testPathIgnorePatterns: ['/node_modules/', '/public'],
+    setupFilesAfterEnv: [
+        '@testing-library/jest-dom/extend-expect'
+    ]
 };
