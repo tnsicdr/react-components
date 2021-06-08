@@ -1,18 +1,19 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren } from 'react';
 
-interface IAppBarProps {
-    title?: string | JSX.Element | JSX.Element[];
-}
+interface IBaseAppBarProps {}
 
-export const AppBar = (props: PropsWithChildren<IAppBarProps>) => {
-    const { children, title } = props;
+export const BaseAppBar = (props: PropsWithChildren<IBaseAppBarProps>) => {
+  const { children } = props;
 
-    return (
-        <div>
-            <div>
-                {title}
-            </div>
-            { children }
-        </div>
-    );
+  return (
+    <div>
+      <div>{children}</div>
+    </div>
+  );
+};
+
+export const AppBar = (props: PropsWithChildren<IBaseAppBarProps>) => {
+  const { children } = props;
+
+  return <BaseAppBar>{children}</BaseAppBar>;
 };
