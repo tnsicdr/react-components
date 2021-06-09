@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react';
 
-interface IBaseAppBarProps {}
+interface IBaseAppBarProps extends React.HTMLProps<void> {}
 
 export const BaseAppBar = (props: PropsWithChildren<IBaseAppBarProps>) => {
-  const { children } = props;
+  const { children, className } = props;
 
   return (
-    <div>
+    <div className={className}>
       <div>{children}</div>
     </div>
   );
